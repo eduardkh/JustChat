@@ -10,11 +10,16 @@ import (
 // RegisterRoutes registers HTTP routes for the server.
 func RegisterRoutes(e *echo.Echo) {
 	e.GET("/", index)
+	e.GET("/register", registerPage)
 	e.POST("/register", register)
 }
 
 func index(c echo.Context) error {
-	return c.String(http.StatusOK, "Welcome to JustChat!")
+	return c.Render(http.StatusOK, "index.html", nil)
+}
+
+func registerPage(c echo.Context) error {
+	return c.Render(http.StatusOK, "register.html", nil)
 }
 
 func register(c echo.Context) error {
@@ -29,5 +34,5 @@ func register(c echo.Context) error {
 	if err := services.UserService.Register(c.Request().Context(), req.Username, req.Password); err != nil {
 		return err
 	}
-	return c.String(http.StatusOK, "registered")
+	return c.Redirect(http.StatusSeeOther, "/")
 }
