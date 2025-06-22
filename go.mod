@@ -1,4 +1,4 @@
-module github.com/justchatapp/justchat
+module github.com/eduardkh/justchat
 
 go 1.24.3
 
