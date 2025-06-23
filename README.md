@@ -12,8 +12,7 @@ The server listens on port `8080` by default and stores data in a local `justcha
 
 ## Web UI
 
-After starting the server, open `http://localhost:8080/` to access the login page.
-Use your credentials to log in or follow the **Register** link to create an account.
+After starting the server, open `http://localhost:8080/` in your browser to access the web interface. You can register a new user using the **Register** link on the home page.
 
 The HTML templates are stored in the `templates/` directory and rendered by Echo.
 To build a standalone binary:
