@@ -20,3 +20,4 @@ To build a standalone binary:
 go build -o justchat ./cmd/server
 ```
 Run the resulting binary and open `http://localhost:8080/` to access the UI.
+Successful login redirects you to `/chat`, a placeholder chat screen.
