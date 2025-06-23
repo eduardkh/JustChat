@@ -14,6 +14,8 @@ func main() {
 	services.InitServices()
 	e := echo.New()
 
+	e.Renderer = handlers.NewTemplateRenderer()
+
 	e.Use(middleware.Logger())
 	e.Use(middleware.Recover())
 

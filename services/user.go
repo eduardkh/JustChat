@@ -31,3 +31,19 @@ func (s *UserServiceType) Register(ctx context.Context, username, password strin
 	user := &models.User{Username: username, PasswordHash: string(hash)}
 	return s.store.CreateUser(ctx, user)
 }
+
+// Authenticate verifies username/password pair.
+func (s *UserServiceType) Authenticate(ctx context.Context, username, password string) (bool, error) {
+	user, err := s.store.GetUserByUsername(ctx, username)
+	if err != nil {
+		return false, err
+	}
+	if user == nil {
+		return false, nil
+	}
+	err = bcrypt.CompareHashAndPassword([]byte(user.PasswordHash), []byte(password))
+	if err != nil {
+		return false, nil
+	}
+	return true, nil
+}
